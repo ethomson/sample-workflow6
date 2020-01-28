@@ -14,8 +14,8 @@ jobs:
         echo '::set-output name=cf_output_BucketArn::arn:aws:s3:::kounta-lightspeed-upload-for-data-warehouse'
       id: foo
     - run: |
-        echo ${{steps.foo.outputs.one}}
-        echo ${{steps.foo.outputs.two}}
-        echo ${{steps.foo.outputs.cf_output_BucketArn}}
+        echo '${{steps.foo.outputs.one}}'
+        echo '${{steps.foo.outputs.two}}'
+        echo '${{steps.foo.outputs.cf_output_BucketArn}}'
     - run: |
-        echo ${{toJSON(steps.foo.outputs)}}
+        echo '${{toJSON(steps.foo.outputs)}}'
