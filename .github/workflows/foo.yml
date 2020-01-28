@@ -8,5 +8,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - run:
+        echo '::set-output name=one::1'
+        echo '::set-output name=two::2::zwei'
+      name: foo
     - run: |
-        echo ${{secrets.SECRET}} | rev
+        echo ${{toJSON(steps.foo)}}
