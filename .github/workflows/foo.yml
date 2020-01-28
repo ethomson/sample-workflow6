@@ -11,6 +11,9 @@ jobs:
     - run: |
         echo '::set-output name=one::1'
         echo '::set-output name=two::2::zwei'
-      name: foo
+      id: foo
     - run: |
-        echo ${{toJSON(steps.foo)}}
+        echo ${{steps.foo.outputs.one}}
+        echo ${{steps.foo.outputs.two}}
+    - run: |
+        echo ${{toJSON(steps.foo.outputs)}}
