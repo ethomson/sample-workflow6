@@ -26,4 +26,4 @@ jobs:
 
     steps:
     - run: |
-        echo '${{toJSON(strategy.matrix)}}'
+        echo '${{toJSON(matrix)}}'
