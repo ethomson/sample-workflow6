@@ -7,16 +7,23 @@ jobs:
 
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        key: [value1, value2, value3, value4]
+        include:
+          - key: value1
+            other: other_value1
+            still_another: still_another_value1
+          - key: value2
+            other: other_value2
+            still_another: still_another_value2
+          - key: value3
+            other: other_value3
+            still_another: still_another_value3
+          - key: value4
+            other: other_value4
+            still_another: still_another_value4
+
     steps:
-    - run: env
     - run: |
-        echo '::set-output name=one::1'
-        echo '::set-output name=two::2::zwei'
-        echo '::set-output name=cf_output_BucketArn::arn:aws:s3:::kounta-lightspeed-upload-for-data-warehouse'
-      id: foo
-    - run: |
-        echo '${{steps.foo.outputs.one}}'
-        echo '${{steps.foo.outputs.two}}'
-        echo '${{steps.foo.outputs.cf_output_BucketArn}}'
-    - run: |
-        echo '${{toJSON(steps.foo.outputs)}}'
+        echo '${{toJSON(strategy.matrix)}}'
