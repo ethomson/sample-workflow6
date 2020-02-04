@@ -7,23 +7,5 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        key: [value1, value2, value3, value4]
-        include:
-          - key: value1
-            other: other_value1
-            still_another: still_another_value1
-          - key: value2
-            other: other_value2
-            still_another: still_another_value2
-          - key: value3
-            other: other_value3
-            still_another: still_another_value3
-          - key: value4
-            other: other_value4
-            still_another: still_another_value4
-
     steps:
-    - run: |
-        echo '${{toJSON(matrix)}}'
+    - run: echo ::set-env name=ENVIRONMENT::staging
