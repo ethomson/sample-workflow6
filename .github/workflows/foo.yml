@@ -1,11 +1,13 @@
-name: CI
-
-on: [push]
-
+name: Foo
+on:
+  pull_request:
+    paths:
+      - 'frontend/**'
+    types: [assigned, opened, synchronize, reopened]
+    branches:
+      - master
 jobs:
-  build:
-
+  job:    
     runs-on: ubuntu-latest
-
     steps:
-    - run: echo ::set-env name=ENVIRONMENT::staging
+      - run: env
