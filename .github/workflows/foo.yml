@@ -1,13 +1,21 @@
 name: Foo
 on:
   pull_request:
-    paths:
-      - 'frontend/**'
-    types: [assigned, opened, synchronize, reopened]
+    branches:
+      - master
+  push:
     branches:
       - master
 jobs:
   job:    
     runs-on: ubuntu-latest
     steps:
+      - run: |
+          if [ "${{ runner.os }}" == "Windows" ]; then
+            echo "::set-env name=default_shell::cmd"
+          else
+            echo "::set-env name=default_shell::bash"
+          fi
+        shell: bash
       - run: env
+        shell: ${{ env.default_shell }}
