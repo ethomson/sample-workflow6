@@ -18,4 +18,4 @@ jobs:
           fi
         shell: bash
       - run: env
-        shell: ${{ env.default_shell }}
+        shell: env.default_shell
